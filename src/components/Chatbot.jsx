@@ -1,24 +1,40 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
 
 function Chatbot() {
   const [messages, setMessages] = useState([
     { role: 'bot', text: "Hey! I'm NOVA, Arjun's AI. Ask me anything about him 🔮" }
   ])
+  const [history, setHistory] = useState([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
+  const bottomRef = useRef(null)
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages, loading])
 
   const sendMessage = async () => {
     if (!input.trim()) return
 
     const userMsg = { role: 'user', text: input }
+    const newHistory = [...history, { role: 'user', content: input }]
+
     setMessages(prev => [...prev, userMsg])
+    setHistory(newHistory)
     setInput('')
     setLoading(true)
 
     try {
-      const res = await axios.post('https://backend.bajpai.dev/api/chat', { message: input })
-      setMessages(prev => [...prev, { role: 'bot', text: res.data.reply }])
+      const res = await axios.post('https://backend.bajpai.dev/api/chat', {
+        message: input,
+        history: newHistory
+      })
+
+      const botReply = res.data.reply
+      setMessages(prev => [...prev, { role: 'bot', text: botReply }])
+      setHistory(prev => [...prev, { role: 'assistant', content: botReply }])
+
     } catch {
       setMessages(prev => [...prev, { role: 'bot', text: 'Something went wrong 😭 try again!' }])
     }
@@ -36,15 +52,12 @@ function Chatbot() {
       <h2 className="text-4xl font-bold text-white mb-12">Talk to NOVA</h2>
 
       <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-
-        {/* header */}
         <div className="flex items-center gap-3 px-6 py-4 border-b border-white/10 bg-purple-500/5">
           <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
           <span className="text-white font-semibold text-sm">NOVA</span>
           <span className="text-gray-500 font-mono text-xs ml-auto">Arjun's AI</span>
         </div>
 
-        {/* messages */}
         <div className="h-80 overflow-y-auto flex flex-col gap-4 p-6">
           {messages.map((msg, i) => (
             <div key={i} className={`flex gap-3 max-w-[80%] ${msg.role === 'user' ? 'ml-auto flex-row-reverse' : ''}`}>
@@ -63,9 +76,9 @@ function Chatbot() {
               <div className="w-2 h-2 rounded-full bg-purple-400 animate-bounce [animation-delay:0.4s]"></div>
             </div>
           )}
+          <div ref={bottomRef} />
         </div>
 
-        {/* input */}
         <div className="flex gap-3 px-6 py-4 border-t border-white/10 bg-black/20">
           <input
             type="text"
@@ -82,7 +95,6 @@ function Chatbot() {
             Send
           </button>
         </div>
-
       </div>
     </section>
   )
