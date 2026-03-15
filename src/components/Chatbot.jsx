@@ -17,7 +17,7 @@ function Chatbot() {
     setLoading(true)
 
     try {
-      const res = await axios.post('http://localhost:3001/api/chat', { message: input })
+      const res = await axios.post('https://backend.bajpai.dev/api/chat', { message: input })
       setMessages(prev => [...prev, { role: 'bot', text: res.data.reply }])
     } catch {
       setMessages(prev => [...prev, { role: 'bot', text: 'Something went wrong 😭 try again!' }])
