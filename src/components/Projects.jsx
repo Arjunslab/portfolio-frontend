@@ -45,7 +45,7 @@ const tagColorMap = {
 
 function Projects() {
   return (
-    <section className="px-8 py-24 max-w-5xl mx-auto">
+    <section id="projects" className="px-8 py-24 max-w-5xl mx-auto">
       <p className="text-purple-400 font-mono text-sm tracking-widest uppercase mb-2">What I've built</p>
       <h2 className="text-4xl font-bold text-white mb-12">Projects</h2>
 

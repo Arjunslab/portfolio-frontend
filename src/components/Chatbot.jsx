@@ -47,7 +47,7 @@ function Chatbot() {
   }
 
   return (
-    <section className="px-8 py-24 max-w-5xl mx-auto pb-32">
+    <section id="chatbot" className="px-8 py-24 max-w-5xl mx-auto pb-32">
       <p className="text-purple-400 font-mono text-sm tracking-widest uppercase mb-2">AI Assistant</p>
       <h2 className="text-4xl font-bold text-white mb-12">Talk to NOVA</h2>
 
