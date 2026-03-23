@@ -1,7 +1,6 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
+    { "source": "/I_AM_DEV", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
