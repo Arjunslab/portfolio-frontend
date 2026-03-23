@@ -42,10 +42,10 @@ export default function NotFound() {
         </div>
 
         {/* Footer hint */}
-        <p style={styles.hint}>
+        {/* <p style={styles.hint}>
           If you think this is a bug, check your{" "}
           <code style={styles.code}>vercel.json</code> rewrites.
-        </p>
+        </p> */}
       </div>
 
       <style>{`
