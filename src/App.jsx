@@ -6,6 +6,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Chatbot from './components/Chatbot'
 import NotFound from './components/NotFound'
+import DevPortal from './components/DevPortal'
 
 function Home() {
   return (
@@ -24,6 +25,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/I_AM_DEV" element={<DevPortal />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
