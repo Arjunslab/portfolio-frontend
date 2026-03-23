@@ -5,7 +5,7 @@ import Hero from './components/Hero'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Chatbot from './components/Chatbot'
-import NotFound from './components/Notfound'
+import NotFound from './components/NotFound'
 
 function Home() {
   return (
