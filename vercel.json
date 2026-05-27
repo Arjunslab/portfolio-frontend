@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/I_AM_DEV", "destination": "/index.html" },
+{ "source": "/preview.png", "destination": "/" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
