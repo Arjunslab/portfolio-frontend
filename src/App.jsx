@@ -26,7 +26,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/I_AM_DEV" element={<DevPortal />} />
-        <Route path="/preview.png" element={<preview />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
