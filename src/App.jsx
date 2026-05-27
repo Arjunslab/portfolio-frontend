@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import preview from './assets/preview.png'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
@@ -26,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/I_AM_DEV" element={<DevPortal />} />
+        <Route path="/preview.png" element={<preview />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
