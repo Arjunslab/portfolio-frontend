@@ -6,12 +6,14 @@ import Projects from './components/Projects'
 import Chatbot from './components/Chatbot'
 import NotFound from './components/NotFound'
 import DevPortal from './components/DevPortal'
+import AdsenseAd from './components/Adsense'
 
 function Home() {
   return (
     <main className="bg-[#050510] min-h-screen">
       <Navbar />
       <Hero />
+      <AdsenceAd />
       <Skills />
       <Projects />
       <Chatbot />
