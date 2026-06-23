@@ -13,7 +13,7 @@ function Home() {
     <main className="bg-[#050510] min-h-screen">
       <Navbar />
       <Hero />
-      <AdsenceAd />
+      <AdsenseAd />
       <Skills />
       <Projects />
       <Chatbot />
